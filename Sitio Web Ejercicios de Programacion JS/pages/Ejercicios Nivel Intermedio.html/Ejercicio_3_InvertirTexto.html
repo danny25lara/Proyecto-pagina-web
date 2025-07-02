@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Invertir cadena</title>
+</head>
+<body>
+<div class="container">
+<h1>🔁 Invertir una cadena de texto</h1>
+
+<div class="descripcion">
+    Escribe una palabra o frase y haz clic para verla invertida.
+</div>
+
+<label for="cadena">Texto:</label>
+<input type="text" id="cadena" placeholder="Ej: hola mundo" />
+
+<button onclick="invertirCadena()">Invertir</button>
+
+<div id="resultado" class="resultado"></div>
+
+<button onclick="mostrarCodigo()">Mostrar código</button>
+<pre id="codigo"><code>
+function invertirCadena() {
+const texto = document.getElementById("cadena").value;
+const invertido = texto.split("").reverse().join("");
+document.getElementById("resultado").textContent = "Texto invertido: " + invertido;
+document.getElementById("resultado").classList.add("mostrar");
+}
+</code></pre>
+</div>
+
+<script>
+function invertirCadena() {
+    const texto = document.getElementById("cadena").value;
+    const invertido = texto.split("").reverse().join("");
+    document.getElementById("resultado").textContent = "Texto invertido: " + invertido;
+    document.getElementById("resultado").classList.add("mostrar");
+}
+
+function mostrarCodigo() {
+    const codigo = document.getElementById("codigo");
+    codigo.style.display = (codigo.style.display === "none") ? "block" : "none";
+}
+</script>
+
+<style>
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #30cfd0, #330867);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    animation: fondoAnimado 6s ease-in-out infinite alternate;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+}
+
+h1 {
+    font-size: 2rem;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+    margin-bottom: 10px;
+}
+
+.descripcion {
+    font-size: 1rem;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+button {
+    padding: 12px 24px;
+    margin: 10px 5px;
+    background: linear-gradient(45deg, #ff9966, #ff5e62);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.resultado {
+    margin-top: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    font-size: 1.3rem;
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+    white-space: pre-line;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.mostrar {
+    opacity: 1;
+}
+
+#codigo {
+    display: none;
+    margin-top: 25px;
+    background-color: rgba(0, 0, 0, 0.95);
+    color: #00ffcc;
+    padding: 25px;
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    white-space: pre-wrap;
+    width: 90%;
+    max-width: 95%;
+    overflow-x: auto;
+    transition: all 0.4s ease;
+}
+
+@keyframes fondoAnimado {
+    0% {
+    background: linear-gradient(135deg, #30cfd0, #330867);
+    }
+    100% {
+    background: linear-gradient(135deg, #330867, #30cfd0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+    opacity: 0;
+    transform: translateY(-10px);
+    }
+    to {
+    opacity: 1;
+    transform: translateY(0);
+    }
+}
+.volver-menu-container {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 9999;
+}
+
+.boton-volver-menu {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.4);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: inline-block;
+}
+
+.boton-volver-menu:hover {
+    background-color: #0056b3;
+    box-shadow: 0 6px 12px rgba(0, 86, 179, 0.6);
+}
+</style>
+<div class="volver-menu-container">
+    <a href="/pages/Ejercicios Nivel Intermedio.html/Menu_Nivel_InterMedio.html" class="boton-volver-menu">⬅️ Volver al Menú Principal</a>
+</div>
+</body>
+</html>

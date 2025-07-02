@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nota Academica</title>
+</head>
+<body>
+    <h1>Verificar Nota "APROBADO"-"SUPLETORIO"-"REPROBRADO"</h1>
+    <form action="">
+        <div class="formulario">
+            <label for="number">NOTA</label>
+            <input type="number" id="nota1" value="" placeholder="ingresa la Nota" required />
+        </div>
+        <div id="resultado">
+            SU resultado es:
+        </div>
+        <div class="button">
+            <button type="button" onclick="Nota()">Verificar</button>
+            <button onclick="limpiarPantalla()">🧹 Limpiar Pantalla</button>
+        </div>
+        
+        <div class="codigo-toggle">
+            <button type="button" onclick="mostrarCodigo()">Código del Ejercicio</button>
+            <pre id="codigo" style="display: none;">
+function Nota(){
+    let n1 = parseFloat(document.getElementById("nota1").value);
+    const resultado = document.getElementById("resultado");
+    resultado.innerHTML = "";
+
+    if (n1 >= 70) {
+        resultado.innerHTML = "✅ APROBADO CON: " + n1;
+        resultado.style.color = "#a7f3d0"; 
+    } else if (n1 >= 50) {
+        resultado.innerHTML = "⚠️ SUPLETORIO CON: " + n1;
+        resultado.style.color = "#fde68a"; 
+    } else {
+        resultado.innerHTML = "❌ REPROBADO CON: " + n1;
+        resultado.style.color = "#fecaca";
+    }
+}
+        </pre>
+        </div>
+    </form>
+        <!-- Botón Volver al Menú -->
+    <div class="volver-menu-container">
+        <a href="/pages/Ejercicios Nivel Basico. html/Menu_Ejercicios_Basicos.html" class="boton-volver-menu">⬅️ Volver al Menú Principal</a>
+    </div>
+    <script>
+        function Nota(){
+            let n1 = 0;
+            n1 = parseFloat(document.getElementById("nota1").value);
+            const resultado = document.getElementById("resultado");
+            resultado.innerHTML = "";
+
+            if (n1 >= 70) {
+                resultado.innerHTML = "✅ APROBADO CON: " + n1;
+                resultado.style.color = "#a7f3d0"; 
+            } else if (n1 >= 50) {
+                resultado.innerHTML = "⚠️ SUPLETORIO CON: " + n1;
+                resultado.style.color = "#fde68a"; 
+            } else {
+                resultado.innerHTML = "❌ REPROBADO CON: " + n1;
+                resultado.style.color = "#fecaca";
+            }
+        }
+        function mostrarCodigo() {
+            const codigo = document.getElementById("codigo");
+            codigo.style.display = (codigo.style.display === "none") ? "block" : "none";
+        }   
+        function limpiarPantalla() {
+            document.getElementById("nota1").value = "";       // Limpia el input edad
+            document.getElementById("resultado").innerHTML = ""; // Limpia el resultado mostrado
+}
+    </script>
+<style>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #6366f1, #06b6d4);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+h1 {
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+form {
+    background: #ffffff10;
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 400px;
+}
+
+.formulario {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1em;
+    color: #333;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#resultado {
+    margin-top: 20px;
+    font-size: 1.2em;
+    text-align: center;
+    font-weight: bold;
+    color: #fef3c7;
+}
+
+.button {
+    display: flex;
+    justify-content: center; 
+    margin-top: 25px;
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s, transform 0.2s;
+}
+
+button[type="button"] {
+    background-color: #10b981;
+    color: white;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+.codigo-toggle button {
+    margin-top: 20px;
+    width: 100%;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.codigo-toggle button:hover {
+    background-color: #2563eb;
+}
+
+#codigo {
+    background-color: #1f2937;
+    color: #d1d5db;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    white-space: pre-wrap;
+    font-family: monospace;
+    font-size: 0.9em;
+}
+
+/* Botón Volver al Menú superior izquierda */
+.volver-menu-container {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 9999;
+}
+
+.boton-volver-menu {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.4);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: inline-block;
+}
+
+.boton-volver-menu:hover {
+    background-color: #0056b3;
+    box-shadow: 0 6px 12px rgba(0, 86, 179, 0.6);
+}
+</style>
+</body>
+</html>

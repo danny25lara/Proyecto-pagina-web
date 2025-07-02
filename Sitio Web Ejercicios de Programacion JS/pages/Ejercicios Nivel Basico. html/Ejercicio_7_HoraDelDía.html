@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Saludo según la hora</title>
+</head>
+<body>
+<div class="container">
+    <h1>Saludo según la hora</h1>
+
+        <label for="hora">¿Qué hora es? (0 - 23):</label>
+        <input type="number" id="hora" placeholder="Ejemplo: 14" min="0" max="23" />
+<div class="buttons">
+    <button onclick="decirSaludo()">Ver saludo</button>
+    <button onclick="limpiarPantalla()">🧹 Limpiar Pantalla</button>
+</div>
+    <div id="saludo" class="resultado"></div>
+
+    <button onclick="mostrarCodigo()">Mostrar código</button>
+    <pre id="codigo" style="display: none;"><code>
+    function decirSaludo() {
+    var hora = parseInt(document.getElementById('hora').value);
+    var saludo = "";
+
+    if (isNaN(hora) || hora < 0 || hora > 23) {
+    alert("Por favor, ingresa una hora válida entre 0 y 23.");
+    return;
+    }
+
+    if (hora >= 0 && hora <= 11) {
+    saludo = "Buenos días ☀️";
+    } else if (hora >= 12 && hora <= 17) {
+    saludo = "Buenas tardes 🌤️";
+    } else {
+    saludo = "Buenas noches 🌙";
+    }
+
+    document.getElementById('saludo').textContent = saludo;
+    document.getElementById('saludo').style.opacity = 1;
+    }
+    </code></pre>
+    </div>
+
+<script>
+function decirSaludo() {
+    var hora = parseInt(document.getElementById('hora').value);
+    var saludo = "";
+
+    if (isNaN(hora) || hora < 0 || hora > 23) {
+    alert("Por favor, ingresa una hora válida entre 0 y 23.");
+    return;
+    }
+
+    if (hora >= 0 && hora <= 11) {
+    saludo = "Buenos días ☀️";
+    } else if (hora >= 12 && hora <= 17) {
+    saludo = "Buenas tardes 🌤️";
+    } else {
+    saludo = "Buenas noches 🌙";
+    }
+
+    document.getElementById('saludo').textContent = saludo;
+    document.getElementById('saludo').style.opacity = 1;
+}
+function limpiarPantalla() {
+    document.getElementById("hora").value = "";       // Limpia el input edad
+    document.getElementById("saludo").innerHTML = ""; // Limpia el resultado mostrado
+}
+function mostrarCodigo() {
+    var codigo = document.getElementById('codigo');
+    codigo.style.display = (codigo.style.display === "none") ? "block" : "none";
+}
+
+</script>
+
+<style>
+body {
+    margin: 0;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    font-family: Arial, sans-serif;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    background: rgba(255,255,255,0.1);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    animation: fadeInUp 1s ease forwards;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-align: left;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: none;
+    background-color: rgba(255,255,255,0.2);
+    color: white;
+    font-size: 1rem;
+}
+
+input::placeholder {
+    color: #ddd;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: linear-gradient(45deg, #ff4b2b, #ff416c);
+}
+
+.resultado {
+    margin-top: 20px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    text-shadow: 1px 1px 4px #000;
+}
+
+pre {
+    margin-top: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px 25px;
+    color: #00ff00;
+    border-radius: 12px;
+    text-align: left;
+    font-size: 0.9rem;
+    overflow-x: auto;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    white-space: pre-wrap;
+}
+
+
+@keyframes fadeInUp {
+    from {
+    opacity: 0;
+    transform: translateY(30px);
+    }
+    to {
+    opacity: 1;
+    transform: translateY(0);
+    }
+}
+/* Botón Volver al Menú superior izquierda */
+.volver-menu-container {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 9999;
+}
+
+.boton-volver-menu {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.4);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: inline-block;
+}
+
+.boton-volver-menu:hover {
+    background-color: #0056b3;
+    box-shadow: 0 6px 12px rgba(0, 86, 179, 0.6);
+}
+</style>
+    <div class="volver-menu-container">
+        <a href="/pages/Ejercicios Nivel Basico. html/Menu_Ejercicios_Basicos.html" class="boton-volver-menu">⬅️ Volver al Menú Principal</a>
+    </div>
+</body>
+</html>

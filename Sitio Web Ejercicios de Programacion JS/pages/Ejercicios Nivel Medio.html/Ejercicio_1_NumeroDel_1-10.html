@@ -1,0 +1,179 @@
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mostrar números 1 al 10</title>
+    </head>
+    <body>
+
+    <h1>📊 Mostrar números del 1 al 10 con for</h1>
+
+    <button onclick="mostrarNumeros()">Mostrar números</button>
+
+    <div class="resultado" id="resultado"></div>
+
+    <button onclick="mostrarCodigo()">Mostrar / Ocultar código</button>
+
+    <pre class="codigo" id="codigo">
+    
+    function mostrarNumeros() {
+    var resultado = "";
+    for (var i = 1; i &lt;= 10; i++) {
+        resultado += i + " ";
+    }
+    document.getElementById("resultado").textContent = resultado.trim();
+    }
+    </pre>
+    <script>
+    function mostrarNumeros() {
+        var resultado = "";
+        for (var i = 1; i <= 10; i++) {
+        resultado += i + " ";
+        }
+        document.getElementById("resultado").textContent = resultado.trim();
+    }
+
+    function mostrarCodigo() {
+            const codigo = document.getElementById("codigo");
+            codigo.style.display = (codigo.style.display === "none") ? "block" : "none";
+        }
+    </script>
+
+    <style>
+    body {
+        margin: 0;
+        padding: 20px;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(135deg, #00b4db, #0083b0);
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        animation: fondoAnimado 10s ease infinite alternate;
+    }
+
+    h1 {
+        font-size: 2rem;
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        margin-bottom: 20px;
+        animation: fadeIn 1s ease-out;
+    }
+
+    button {
+        padding: 12px 24px;
+        margin: 10px;
+        background: linear-gradient(45deg, #ff6ec4, #7873f5);
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 14px;
+        cursor: pointer;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .resultado {
+        margin-top: 20px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(5px);
+        border-radius: 16px;
+        padding: 20px 25px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        font-size: 1.6rem;
+        text-align: center;
+        max-width: 600px;
+        width: 100%;
+        animation: aparecerResultado 1s ease-out forwards;
+        opacity: 0;
+        white-space: pre-line;
+    }
+
+    .mostrar {
+        opacity: 1 !important;
+    }
+
+    #codigo {
+        display: none;
+        margin-top: 25px;
+        background-color: rgba(0, 0, 0, 0.9);
+        color: #00ff99;
+        padding: 25px;
+        font-family: 'Courier New', monospace;
+        font-size: 1rem;
+        border-radius: 14px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+        white-space: pre-wrap;
+        width: 100%;
+        max-width: 95%;
+        overflow-x: auto;
+        transition: all 0.4s ease;
+    }
+
+    @keyframes aparecerResultado {
+        0% {
+        opacity: 0;
+        transform: translateY(20px);
+        }
+        100% {
+        opacity: 1;
+        transform: translateY(0);
+        }
+    }
+
+    @keyframes fondoAnimado {
+        0% {
+        background: linear-gradient(135deg, #00b4db, #0083b0);
+        }
+        100% {
+        background: linear-gradient(135deg, #0083b0, #00b4db);
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+        opacity: 0;
+        transform: translateY(-10px);
+        }
+        to {
+        opacity: 1;
+        transform: translateY(0);
+        }
+    }
+.volver-menu-container {
+position: fixed;
+top: 20px;
+left: 20px;
+z-index: 9999;
+}
+
+.boton-volver-menu {
+background-color: #007bff;
+color: white;
+padding: 12px 24px;
+border-radius: 25px;
+text-decoration: none;
+font-weight: 600;
+box-shadow: 0 4px 8px rgba(0, 123, 255, 0.4);
+transition: background-color 0.3s ease, box-shadow 0.3s ease;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+display: inline-block;
+}
+
+.boton-volver-menu:hover {
+background-color: #0056b3;
+box-shadow: 0 6px 12px rgba(0, 86, 179, 0.6);
+}
+    </style>
+<div class="volver-menu-container">
+    <a href="/pages/Ejercicios Nivel Medio.html/Menu_Nivel_Medio.html" class="boton-volver-menu">⬅️ Volver al Menú Principal</a>
+</div>
+
+    </body>
+    </html>

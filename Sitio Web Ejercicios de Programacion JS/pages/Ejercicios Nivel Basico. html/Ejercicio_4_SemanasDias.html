@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verificar Día de la Semana</title>
+</head>
+<body>
+    <!-- Botón Volver al Menú -->
+    <div class="volver-menu-container">
+        <a href="/pages/Ejercicios Nivel Basico. html/Menu_Ejercicios_Basicos.html" class="boton-volver-menu">⬅️ Volver al Menú Principal</a>
+    </div>
+
+    <div class="container">
+        <h1>¿Es fin de semana?</h1>
+        <label for="dia">Ingresa un día de la semana:</label><br /><br />
+        <input type="text" id="dia" placeholder="Ej: lunes" required /><br />
+        <button onclick="verificarDia()">Verificar</button>
+        <button onclick="limpiarPantalla()">🧹 Limpiar Pantalla</button>
+
+        <p id="resultado"></p>
+
+        <button onclick="mostrarCodigo()">Código del Ejercicio</button>
+        <div id="codigo">
+function verificarDia() {
+    let dia = document.getElementById("dia").value;
+    dia = dia.toLowerCase().trim();
+    (Convierte todo el texto a minúsculas.
+    "Lunes" → "lunes"
+    "LUNES" → "lunes")
+    let resultado = document.getElementById("resultado");
+
+    if (dia === "sabado" || dia === "sábado" || dia === "domingo") {
+        resultado.innerText = dia + " es fin de semana";
+        resultado.style.color = "gold";
+} else if (
+        dia === "lunes" || dia === "martes" || dia === "miercoles" ||
+        dia === "miércoles" || dia === "jueves" || dia === "viernes") {
+        resultado.innerText = dia + " es un día entre semana";
+        resultado.style.color = "lightgreen";
+} else {
+        resultado.innerText = "Día no reconocido. Por favor escribe un día correcto.";
+        resultado.style.color = "lightcoral";
+    }
+}
+        </div>
+    </div>
+
+<script>
+    function verificarDia() {
+        let dia = document.getElementById("dia").value;
+        dia = dia.toLowerCase().trim();
+        const resultado = document.getElementById("resultado");
+
+        if (dia === "sabado" || dia === "sábado" || dia === "domingo") {
+            resultado.innerHTML = dia + " es fin de semana";
+            resultado.style.color = "gold";
+        } else if (
+            dia === "lunes" || dia === "martes" || dia === "miercoles" ||
+            dia === "miércoles" || dia === "jueves" || dia === "viernes"
+        ) {
+            resultado.innerHTML = dia + " es un día entre semana";
+            resultado.style.color = "lightgreen";
+        } else {
+            resultado.innerHTML = "Día no reconocido. Por favor escribe un día correcto.";
+            resultado.style.color = "lightcoral";
+        }
+    }
+
+    function mostrarCodigo() {
+        const codigo = document.getElementById("codigo");
+        codigo.style.display = codigo.style.display === "none" ? "block" : "none";
+    }
+    function limpiarPantalla() {
+            document.getElementById("dia").value = "";       // Limpia el input edad
+            document.getElementById("resultado").innerHTML = ""; // Limpia el resultado mostrado
+}
+</script>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(120deg, #4f46e5, #06b6d4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: white;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(6px);
+}
+
+input {
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: #333;
+    width: 200px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #10b981;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #059669;
+}
+
+#resultado {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+#codigo{
+    margin-top: 20px;
+    text-align: left;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    display: none;
+    white-space: pre-wrap;
+    font-family: monospace;
+    color: white;
+}
+
+/* Botón Volver al Menú superior izquierda */
+.volver-menu-container {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 9999;
+}
+
+.boton-volver-menu {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.4);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: inline-block;
+}
+
+.boton-volver-menu:hover {
+    background-color: #0056b3;
+    box-shadow: 0 6px 12px rgba(0, 86, 179, 0.6);
+}
+</style>
+</body>
+</html>

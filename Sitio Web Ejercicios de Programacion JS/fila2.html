@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Análisis de Títulos</title>
+</head>
+<body>
+<h1>📚 Analizar títulos de libros</h1>
+
+<label for="cantidad">¿Cuántos títulos deseas ingresar?</label>
+<input type="number" id="cantidad" placeholder="Ej: 3" />
+
+<button onclick="generarCampos()">Generar Campos</button>
+
+<div id="inputsContainer"></div>
+
+<button id="btnAnalizar" onclick="analizarTitulos()">Analizar Títulos</button>
+
+<div id="resultados"></div>
+
+<script>
+function generarCampos() {
+    const cantidad = parseInt(document.getElementById("cantidad").value);
+    const contenedor = document.getElementById("inputsContainer");
+    const btn = document.getElementById("btnAnalizar");
+
+    contenedor.innerHTML = "";
+
+    for (let i = 0; i < cantidad; i++) {
+    const input = document.createElement("input");
+    input.type = "text";
+    input.placeholder = `Título ${i + 1}`;
+    input.id = `titulo${i}`;
+    contenedor.appendChild(input);
+    }
+
+    if (cantidad > 0) btn.style.display = "block";
+}
+
+function analizarTitulos() {
+    const cantidad = parseInt(document.getElementById("cantidad").value);
+    let mas20 = 0;
+    let terminaEnNumero = 0;
+    let otros = 0;
+    let listaTitulos = [];
+
+    for (let i = 0; i < cantidad; i++) {
+    const titulo = document.getElementById(`titulo${i}`).value.trim();
+    listaTitulos.push(titulo);
+
+    const ultimoChar = titulo.charAt(titulo.length - 1);
+    
+    if (titulo.length > 20) {
+        mas20++;
+    } else if (!isNaN(ultimoChar) && titulo !== "") {
+        terminaEnNumero++;
+    } else {
+        otros++;
+    }
+    }
+
+    const resultados = document.getElementById("resultados");
+    resultados.innerHTML = `
+    <h3>Títulos ingresados:</h3>
+    <ul>${listaTitulos.map(t => `<li>${t}</li>`).join('')}</ul>
+    <p>📝 Títulos con más de 20 caracteres: <strong>${mas20}</strong></p>
+    <p>🔢 Títulos que terminan en número: <strong>${terminaEnNumero}</strong></p>
+    <p>📌 Otros títulos: <strong>${otros}</strong></p>
+    `;
+}
+</script>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #f472b6, #60a5fa);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    color: #fff;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 5px #000;
+}
+
+input[type="number"], input[type="text"] {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    width: 250px;
+    margin-bottom: 10px;
+    font-size: 1em;
+    color: #333;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #9333ea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+button:hover {
+    background-color: #7e22ce;
+    transform: scale(1.05);
+}
+
+#inputsContainer {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#btnAnalizar {
+    display: none;
+}
+
+#resultados {
+    margin-top: 20px;
+    background-color: rgba(255,255,255,0.2);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+ul {
+    text-align: left;
+}
+</style>
+</body>
+</html>

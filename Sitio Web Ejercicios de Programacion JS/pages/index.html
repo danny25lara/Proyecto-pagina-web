@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/estiloPrincipal.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Ejericicios Programación</title>
+</head>
+<body>
+    <header class="principal">
+        <div id="titulo">
+            <h1>Ejercicios de Lógica de Programación de 1er Año de Universidad</h1>
+        </div>
+    </header>
+    
+    <nav >
+        <ul>
+            <li><a href="#INICIO">Inicio</a></li>
+            <li><a href="#Ejercicios_Por_niveles">Ejercicios Por Niveles</a></li>
+            <li><a href="#SobreNosotros">Sobre Nostros</a></li>
+            <li><a href="#CONTACTO">Contacto</a></li>
+            <li><a href="#REDSOCIAL">Redes Sociales</a></li>
+
+        </ul>
+    </nav>
+    
+    <main class="container" id="contenedor">
+        <section id="INICIO">
+            <h2>Bienvenidos a la pagina Web de PROGRAMACION</h2>
+            <p>Paginar web creada con el proposito de mostrar ejercicios de logica de progrmacion resueltos, dividadas en diferentes niveles <strong>(básicos, medios, intermedios y avanzados).</strong></p>            <ol>
+                <strong><li>Nivel Básico</li></strong>
+                <p>
+                Este nivel emplea ejercicios de conocimiento basicos, para que puedan ser comprendidos y entendidos con mayor falicidad. Siendo ejercicio de <strong>CONDICIONES</strong>
+                por valor Verdadero y Falso, siendo sencillo de desarrollar. El proposito de este nivel es enseñar las bases de como funciona o se desarrolla la Lógica mediante condiciones, trabajando el 
+                pensamiento computacional para la verificacion de un resultado.    
+                </p>
+                <strong><li>Nivel Medio</li></strong>
+                <p>
+                Este nivel emplea ejercicios de conocientos ya adaptados a la lógica anterior, siendo de igual facilidad para comprender y entenderse. Los ejercicios cuentan con <strong>CICLOS O BUCLES</strong>
+                siendo una mezcla con el Nivel Anterior. El proposito de este nivel es hacer que la lógica vaya más alla de lo repetitivo, en vez de repetir lineas y lineas de codigos identicas con diferente valor, hacer que
+                se repita una sola funcionalidad por medio de ciclos repetitivos o bucles de acciones reiterativas.
+                </p>
+                <strong><li>Nivel Intermedio</li></strong>
+                <p>
+                Este nivel emplea ejercicios de conocimientos ya mas avanzados, haciendo mezcla de los dos niveles ya previamente aprendidos y comprendidos. Este 3er nivel se considera uno avanzado gracias a su compresión y desarrollo de lógica
+                de manera eficaz y eficiente teniendo <strong>CADENAS</strong> como base principal, optimizando la lógica y reduciendo lineas de codigos.
+                </p>
+                <strong><li>Nivel Avanzado</li></strong>
+                <p>
+                Por ultimo el 4 nivel o el nivel "Avanzado", empleando ejercicios de lógica desarrollada, usando <strong>ARREGLOS</strong> para desarrollar ejercicios de alta funcionalidad, eficientes y eficaces. Mejorando el pensamiento abstracto y lógico de cada
+                Usuario.
+                </p>
+            </ol>
+        </section>
+        
+        <section id="Ejercicios_Por_niveles">
+            <h2> Ejercicios Por Niveles</h2>
+            <nav>
+                <ol>
+                    <li><a href="/pages/Ejercicios Nivel Basico. html/Menu_Ejercicios_Basicos.html">NIVEL BÁSICO</a></li>
+                    <li><a href="/pages/Ejercicios Nivel Medio.html/Menu_Nivel_Medio.html">NIVEL MEDIO</a></li>
+                    <li><a href="/pages/Ejercicios Nivel Intermedio.html/Menu_Nivel_InterMedio.html">NIVEL INTERMEDIO</a></li>
+                    <li><a href="/pages/Ejercicios Nivel Avanzado.html/Menu_Nivel_Avanzado.html">NIVEL AVANZADO</a></li>
+                </ol>
+            </nav>
+        </section>
+        
+        <section id="SobreNosotros">
+            <h2>Sobre Nosotros JSoluciones</h2>
+            <div id="card" class="accordion">
+            <div class="accordion-item">
+                <button class="accordion-header">¿Quiénes somos?</button>
+                <div class="accordion-body">
+                    <p>Somos un grupo de estudiantes apasionados por la programación y la educación digital. Nuestro objetivo es compartir conocimientos de forma accesible y dinámica.</p>
+                </div>
+            </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">¿Qué hacemos?</button>
+                    <div class="accordion-body">
+                        <p>Desarrollamos soluciones web, ejercicios de lógica y material interactivo para estudiantes de primer año en programación.</p>
+                    </div>
+                </div>
+            <div class="accordion-item">
+                <button class="accordion-header">¿Qué se hizo?</button>
+                <div class="accordion-body">
+                    <p>Se creó esta plataforma JSoluciones para compartir ejercicios, buenas prácticas y guiar a nuevos programadores en su proceso de aprendizaje.</p>
+                </div>
+            </div>
+        </div>
+<script src="/js/JavaPrincipal.js"></script>
+        </section>
+        
+        <section id="CONTACTO">
+            <H2>Contactanos</H2>
+            <p>Si tienes dudas o sugerencias de nuestra pagina web, no dudes en contactarnos atenderemos tus dudas sin ningun incoveniente.</p>
+                <form action="#">
+                    <div id="NombreContact">
+                        <label for="Nombre">Nombres:</label>
+                        <input type="text" id="Nombre" name="Nombre" placeholder="Nombres y Apellidos" required />
+                    </div>
+                    <div id="Email">
+                        <label for="correo" class="fa fa-envelope" > Email:</label>
+                        <input type="email" id="correo" name="correo" placeholder="correo@gmail.com O correo@hotmail.com" required />
+                    </div>
+                    <div id="mensaje">
+                        <label for="mensaje">Mensaje:</label>
+                        <textarea id="mensaje" name="mensaje" placeholder="Ingrese su sugerencia, duda o inquietud" required></textarea>
+                    </div>
+                    <div id="buttons">
+                        <button type="submit">Enviar</button>
+                    </div>
+                </form>
+        </section>
+        
+        <section id="REDSOCIAL">
+            <h2>Redes Sociales</h2>
+            <p>No te olvides de seguirnos en nuestras redes sociales como:</p>
+            <section class="buttonsRedSocial">
+                <ol>
+                    <li><a href="" class="fa fa-instagram"></a></li>
+                    <li><a a href="" class="fa fa-facebook"></a></li>
+                    <li><a a href="" class="fa fa-youtube"></a></li>
+                </ol>   
+            </section>
+        </section>  
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 WEB PROGRAMACION - Todos los derechos reservados</p>
+    </footer>
+</body> 
+</html>

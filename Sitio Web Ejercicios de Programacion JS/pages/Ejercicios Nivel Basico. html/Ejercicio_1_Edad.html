@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Edad</title>
+</head>
+<body>
+    <h1>Etapa de vida según la edad</h1>
+    
+    <div class="form-group">
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" placeholder="Ingrese su Edad" required>
+    </div>
+
+    <div id="resultado"></div>
+
+    <div id="buttons">
+        <button type="button" onclick="VerificarEdad()">Verificar Etapa</button>
+        <button onclick="limpiarPantalla()">🧹 Limpiar Pantalla</button>
+    </div>
+
+
+    <!-- Botón Mostrar Código -->
+    <div class="codigo-toggle">
+        <button onclick="mostrarCodigo()">Mostrar Código JS</button>
+    </div>
+
+    <!-- Código JS oculto -->
+    <div id="codigo" style="display: none;">
+<pre><code>
+function VerificarEdad(){
+    const edad = parseInt(document.getElementById("edad").value);
+    const resultado = document.getElementById("resultado");
+    let categoria = "";
+
+    if (edad <= 12) {
+        categoria = "Usted es un niño";
+    } else if (edad <= 17) {
+        categoria = "Usted es un Adolescente";
+    } else if (edad <= 59) {
+        categoria = "Usted es un Adulto";
+    } else {
+        categoria = "Usted es un Adulto Mayor";
+    }
+
+    resultado.innerHTML = `Tienes ${edad} años. ${categoria}`;
+}
+</code></pre>
+    </div>
+
+    <!-- Botón Volver al Menú -->
+<div class="volver-menu-container">
+    <a href="/pages/Ejercicios Nivel Basico. html/Menu_Ejercicios_Basicos.html" class="boton-volver-menu">⬅️ Volver al Menú Principal</a>
+</div>
+
+    <script>
+        function VerificarEdad(){
+            const edad = parseInt(document.getElementById("edad").value);
+            const resultado = document.getElementById("resultado");
+            let categoria = "";
+
+            if (edad <= 12) {
+                categoria = "Usted es un niño";
+            } else if (edad <= 17) {
+                categoria = "Usted es un Adolescente";
+            } else if (edad <= 59) {
+                categoria = "Usted es un Adulto";
+            } else {
+                categoria = "Usted es un Adulto Mayor";
+            }
+
+            resultado.innerHTML = `Tienes ${edad} años. ${categoria}`;
+        }
+
+        function mostrarCodigo() {
+            const codigo = document.getElementById("codigo");
+            codigo.style.display = (codigo.style.display === "none") ? "block" : "none";
+        }
+        function limpiarPantalla() {
+            document.getElementById("edad").value = "";       // Limpia el input edad
+            document.getElementById("resultado").innerHTML = ""; // Limpia el resultado mostrado
+}
+    </script>
+
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #4f46e5, #6ee7b7);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 30px;
+    text-align: center;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+}
+
+.form-group {
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 400px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    color: #333;
+    transition: box-shadow 0.3s;
+}
+
+input[type="number"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3);
+}
+
+#buttons {
+    margin-top: 15px;
+}
+
+button {
+    background-color: #10b981;
+    color: #fff;
+    padding: 12px 25px;
+    font-size: 1em;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    margin: 5px;
+}
+
+button:hover {
+    background-color: #059669;
+    transform: scale(1.05);
+}
+
+#resultado {
+    margin-top: 25px;
+    font-size: 1.3em;
+    font-weight: 600;
+    text-align: center;
+    color: #fef3c7;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.codigo-toggle {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.codigo-toggle button {
+    background: linear-gradient(45deg, #f472b6, #ec4899);
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 1em;
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(236, 72, 153, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.codigo-toggle button:hover {
+    transform: scale(1.05);
+}
+
+#codigo {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #1e1b2f;
+    color: #e1e1f8;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 0.95rem;
+    border-radius: 16px;
+    white-space: pre-wrap;
+    box-shadow: 0 8px 30px rgba(255, 126, 179, 0.5);
+    user-select: text;
+    width: 100%;
+    max-width: 680px;
+    overflow-x: auto;
+}
+
+.volver-menu-container {
+position: fixed;
+top: 20px;
+left: 20px;
+z-index: 9999;
+}
+
+.boton-volver-menu {
+background-color: #007bff;
+color: white;
+padding: 12px 24px;
+border-radius: 25px;
+text-decoration: none;
+font-weight: 600;
+box-shadow: 0 4px 8px rgba(0, 123, 255, 0.4);
+transition: background-color 0.3s ease, box-shadow 0.3s ease;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+display: inline-block;
+}
+
+.boton-volver-menu:hover {
+background-color: #0056b3;
+box-shadow: 0 6px 12px rgba(0, 86, 179, 0.6);
+}
+    </style>
+</body>
+</html>

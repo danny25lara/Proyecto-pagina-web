@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Divisores de un numero</title>
+</head>
+<body>
+<div class="container">
+    <h1>Divisores de un Numero</h1>
+<div class="Input-group">
+    <input type="number" id="numero" placeholder="Ingrese un Numero" required>
+</div>
+
+<div class="button-group">
+    <button onclick="DivisorNumero()">Mostrar divisores</button>
+</div>
+    <div class="output" id="resultado"></div>
+</div>
+<button onclick="mostrarCodigo()">Mostrar código</button>
+<div class="volver-menu-container">
+    <a href="/pages/Ejercicios Nivel Medio.html/Menu_Nivel_Medio.html" class="boton-volver-menu">⬅️ Volver al Menú Principal</a>
+</div>
+<pre id="codigo"><code>
+function mostrarDivisores() {
+    const num = parseInt(document.getElementById("numero").value);
+    const resultado = document.getElementById("resultado");
+
+    let i = 1;
+    let divisores = "";
+    while (i <= num) {
+        if (num % i === 0) {
+        divisores += i + " ";
+        }
+        i++;
+    }
+    resultado.textContent = "Divisores de " + num + ":\n" + divisores.trim();
+    resultado.classList.add("mostrar");
+    }
+    </code></pre>
+    <script>
+        function DivisorNumero(){
+
+    const numero = parseInt(document.getElementById("numero").value);
+    const resultado = document.getElementById("resultado");
+
+        resultado.innerHTML = "";  
+    
+    const titulo = document.createElement("p");
+        titulo.textContent = `Divisores de ${numero}:`;
+        resultado.appendChild(titulo);
+
+
+    let i = 1;
+
+    while (i <= numero) {
+        if (numero % i === 0) {
+        const div = document.createElement("div");
+        div.className = "divisor";
+        div.textContent = i;
+        resultado.appendChild(div);
+        }
+    i++;
+    }
+}
+    function mostrarCodigo() {
+        const codigo = document.getElementById("codigo");
+        codigo.style.display = (codigo.style.display === "none") ? "block" : "none";
+    }
+    </script>
+    <style>
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #00b09b, #96c93d);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    animation: fondoAnimado 10s ease infinite alternate;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+}
+h1 {
+    font-size: 2rem;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left;
+}
+input {
+    width: 90%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(30px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+.Input-group {
+margin-bottom: 20px;
+}
+
+input[type="number"] {
+width: 90%;
+padding: 12px;
+border: 1.5px solid var(--input-border);
+border-radius: 10px;
+font-size: 1em;
+transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+input[type="number"]:focus {
+border-color: var(--gradient-end);
+box-shadow: 0 0 8px var(--gradient-end);
+outline: none;
+}
+
+button {
+    padding: 12px 24px;
+    margin: 10px 5px;
+    background: linear-gradient(45deg, #ff6ec4, #7873f5);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+.mostrar {
+    opacity: 1;
+    }
+.output {
+margin-top: 25px;
+font-size: 1.2em;
+color: var(--gradient-end);
+font-weight: 600;
+}
+#codigo {
+    display: none;
+    margin-top: 25px;
+    background-color: rgba(0, 0, 0, 0.95);
+    color: #00ff99;
+    padding: 25px;
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    white-space: pre-wrap;
+    width: 90%;
+    max-width: 95%;
+    overflow-x: auto;
+    transition: all 0.4s ease;
+}
+.volver-menu-container {
+position: fixed;
+top: 20px;
+left: 20px;
+z-index: 9999;
+}
+
+.boton-volver-menu {
+background-color: #007bff;
+color: white;
+padding: 12px 24px;
+border-radius: 25px;
+text-decoration: none;
+font-weight: 600;
+box-shadow: 0 4px 8px rgba(0, 123, 255, 0.4);
+transition: background-color 0.3s ease, box-shadow 0.3s ease;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+display: inline-block;
+}
+
+.boton-volver-menu:hover {
+background-color: #0056b3;
+box-shadow: 0 6px 12px rgba(0, 86, 179, 0.6);
+}
+    </style>
+</body>
+</html>

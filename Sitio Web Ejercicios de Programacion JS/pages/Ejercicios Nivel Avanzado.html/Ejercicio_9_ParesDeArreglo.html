@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Copiar pares a otro arreglo</title>
+</head>
+<body>
+
+  <div class="volver-menu-container">
+    <a href="/pages/Ejercicios Nivel Avanzado.html/Menu_Nivel_Avanzado.html" class="boton-volver-menu">⬅ Volver al menú</a>
+  </div>
+
+  <div class="container">
+    <h1>🔢 Copiar solo los pares a un nuevo arreglo</h1>
+
+    <div class="descripcion">
+      Ingresa números separados por comas. Se copiarán solo los pares a un nuevo arreglo.
+    </div>
+
+    <input type="text" id="inputNumeros" placeholder="Ej: 1, 2, 3, 4, 5, 6" />
+    <button onclick="limpiarPantalla()">🧹 Limpiar Pantalla</button>
+    <button onclick="copiarPares()">Copiar pares</button>
+
+    <div id="resultado" class="resultado"></div>
+
+    <button onclick="mostrarCodigo()">Mostrar código</button>
+    <pre id="codigo"><code>
+function copiarPares() {
+  const input = document.getElementById('inputNumeros').value.trim();
+  const numeros = input.split(',').map(n => Number(n.trim()));
+  const pares = numeros.filter(n => n % 2 === 0);
+
+  document.getElementById('resultado').textContent = 
+    'Arreglo con números pares: [' + pares.join(', ') + ']';
+  document.getElementById('resultado').classList.add('mostrar');
+}
+    </code></pre>
+  </div>
+
+  <script>
+    function copiarPares() {
+      const input = document.getElementById('inputNumeros').value.trim();
+      if (!input) {
+        alert('Por favor ingresa números separados por comas.');
+        return;
+      }
+
+      const numeros = input.split(',').map(n => Number(n.trim()));
+      if (numeros.some(isNaN)) {
+        alert('Por favor, ingresa solo números válidos.');
+        return;
+      }
+
+      const pares = numeros.filter(n => n % 2 === 0);
+
+      document.getElementById('resultado').textContent = 
+        'Arreglo con números pares: [' + pares.join(', ') + ']';
+      document.getElementById('resultado').classList.add('mostrar');
+    }
+
+    function mostrarCodigo() {
+      const codigo = document.getElementById('codigo');
+      codigo.style.display = (codigo.style.display === 'none') ? 'block' : 'none';
+    }
+    function limpiarPantalla() {
+    document.getElementById("inputNumeros").value = "";       // Limpia el input edad
+    document.getElementById("resultado").innerHTML = ""; // Limpia el resultado mostrado
+}
+  </script>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #f6d365, #fda085);
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      animation: fondoAnimado 6s ease-in-out infinite alternate;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      animation: fadeIn 1s ease-out;
+    }
+
+    h1 {
+      font-size: 2rem;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+      margin-bottom: 10px;
+    }
+
+    .descripcion {
+      font-size: 1rem;
+      font-weight: 500;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 10px 15px;
+      border-radius: 10px;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      padding: 12px 15px;
+      font-size: 1rem;
+      border-radius: 14px;
+      border: none;
+      width: 90%;
+      max-width: 400px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 15px rgba(255 255 255 / 0.3);
+      transition: box-shadow 0.3s ease;
+      outline: none;
+      color: #333;
+      background-color: #fff;
+      font-weight: 600;
+    }
+
+    input[type="text"]:focus {
+      box-shadow: 0 0 10px 3px #ff6ec4;
+    }
+
+    button {
+      padding: 12px 24px;
+      margin: 10px 5px;
+      background: linear-gradient(45deg, #f6d365, #fda085);
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .resultado {
+      margin-top: 20px;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 15px 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      font-size: 1.3rem;
+      text-align: center;
+      white-space: pre-line;
+      width: 90%;
+      max-width: 600px;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+
+    .mostrar {
+      opacity: 1;
+    }
+
+    #codigo {
+      display: none;
+      margin-top: 25px;
+      background-color: rgba(0, 0, 0, 0.95);
+      color: #ffe082;
+      padding: 25px;
+      font-family: 'Courier New', monospace;
+      font-size: 1rem;
+      border-radius: 14px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+      white-space: pre-wrap;
+      width: 90%;
+      max-width: 95%;
+      overflow-x: auto;
+      transition: all 0.4s ease;
+    }
+
+    .volver-menu-container {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 9999;
+    }
+
+    .boton-volver-menu {
+      background: linear-gradient(135deg, #ff6ec4, #7873f5);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      box-shadow: 0 4px 10px rgba(255, 110, 196, 0.5);
+      transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      display: inline-block;
+    }
+
+    .boton-volver-menu:hover {
+      background: linear-gradient(135deg, #7873f5, #ff6ec4);
+      box-shadow: 0 6px 15px rgba(120, 115, 245, 0.6);
+      transform: scale(1.05);
+    }
+
+    @keyframes fondoAnimado {
+      0% { background: linear-gradient(135deg, #f6d365, #fda085); }
+      100% { background: linear-gradient(135deg, #fda085, #f6d365); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+
+</body>
+</html>

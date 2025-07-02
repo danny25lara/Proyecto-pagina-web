@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comparar frases</title>
+</head>
+<body>
+  <div class="volver-menu-container">
+    <a href="index.html" class="boton-volver-menu">⬅ Volver al menú</a>
+  </div>
+
+  <div class="container">
+    <h1>🆚 Comparar longitud de frases</h1>
+
+    <div class="descripcion">
+      Escribe dos frases y te diremos cuál tiene más caracteres.
+    </div>
+
+    <label for="frase1">Frase 1:</label>
+    <input type="text" id="frase1" placeholder="Ej: Me gusta programar" />
+
+    <label for="frase2">Frase 2:</label>
+    <input type="text" id="frase2" placeholder="Ej: Aprender es divertido" />
+
+    <button onclick="compararFrases()">Comparar</button>
+
+    <div id="resultado" class="resultado"></div>
+
+    <button onclick="mostrarCodigo()">Mostrar código</button>
+    <pre id="codigo"><code>
+function compararFrases() {
+  const f1 = document.getElementById("frase1").value;
+  const f2 = document.getElementById("frase2").value;
+
+  let mensaje = "";
+  if (f1.length > f2.length) {
+    mensaje = "✅ La primera frase tiene más caracteres.";
+  } else if (f2.length > f1.length) {
+    mensaje = "✅ La segunda frase tiene más caracteres.";
+  } else {
+    mensaje = "🔁 Ambas frases tienen la misma cantidad de caracteres.";
+  }
+  document.getElementById("resultado").textContent = mensaje;
+  document.getElementById("resultado").classList.add("mostrar");
+}
+    </code></pre>
+  </div>
+
+  <script>
+    function compararFrases() {
+      const f1 = document.getElementById("frase1").value;
+      const f2 = document.getElementById("frase2").value;
+
+      let mensaje = "";
+      if (f1.length > f2.length) {
+        mensaje = "✅ La primera frase tiene más caracteres.";
+      } else if (f2.length > f1.length) {
+        mensaje = "✅ La segunda frase tiene más caracteres.";
+      } else {
+        mensaje = "Ambas frases tienen la misma cantidad de caracteres.";
+      }
+
+      document.getElementById("resultado").textContent = mensaje;
+      document.getElementById("resultado").classList.add("mostrar");
+    }
+
+    function mostrarCodigo() {
+      const codigo = document.getElementById("codigo");
+      codigo.style.display = (codigo.style.display === "none") ? "block" : "none";
+    }
+  </script>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #74ebd5, #9face6);
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      animation: fondoAnimado 6s ease-in-out infinite alternate;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      animation: fadeIn 1s ease-out;
+    }
+
+    h1 {
+      font-size: 2rem;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+      margin-bottom: 10px;
+    }
+
+    .descripcion {
+      font-size: 1rem;
+      font-weight: 500;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 10px 15px;
+      border-radius: 10px;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin: 10px 0 5px;
+      text-align: left;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 12px 24px;
+      margin: 10px 5px;
+      background: linear-gradient(45deg, #43cea2, #185a9d);
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .resultado {
+      margin-top: 20px;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 15px 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      font-size: 1.3rem;
+      text-align: center;
+      width: 90%;
+      max-width: 600px;
+      white-space: pre-line;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+
+    .mostrar {
+      opacity: 1;
+    }
+
+    #codigo {
+      display: none;
+      margin-top: 25px;
+      background-color: rgba(0, 0, 0, 0.95);
+      color: #00ffcc;
+      padding: 25px;
+      font-family: 'Courier New', monospace;
+      font-size: 1rem;
+      border-radius: 14px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+      white-space: pre-wrap;
+      width: 90%;
+      max-width: 95%;
+      overflow-x: auto;
+      transition: all 0.4s ease;
+    }
+
+    .volver-menu-container {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 9999;
+    }
+
+    .boton-volver-menu {
+      background: linear-gradient(135deg, #ff6ec4, #7873f5);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      box-shadow: 0 4px 10px rgba(255, 110, 196, 0.5);
+      transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      display: inline-block;
+    }
+
+    .boton-volver-menu:hover {
+      background: linear-gradient(135deg, #7873f5, #ff6ec4);
+      box-shadow: 0 6px 15px rgba(120, 115, 245, 0.6);
+      transform: scale(1.05);
+    }
+
+    @keyframes fondoAnimado {
+      0% {
+        background: linear-gradient(135deg, #74ebd5, #9face6);
+      }
+      100% {
+        background: linear-gradient(135deg, #9face6, #74ebd5);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+<div class="volver-menu-container">
+    <a href="/pages/Ejercicios Nivel Intermedio.html/Menu_Nivel_InterMedio.html" class="boton-volver-menu">⬅️ Volver al Menú Principal</a>
+</div>
+</body>
+</html>
+a

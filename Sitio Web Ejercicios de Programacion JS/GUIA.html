@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Clasificador de Productos</title>
+</head>
+<body>
+<div class="contenedor">
+<h1>Clasificador de Productos</h1>
+<p>Escribe los nombres de los productos separados por comas (,):</p>
+<input type="text" id="entrada" placeholder="Ej: Arroz, leche, uva., queso." />
+<button onclick="clasificar()">Clasificar</button>
+
+<div id="salida"></div>
+</div>
+
+<script>
+function clasificar() {
+
+    let texto = document.getElementById("entrada").value;
+    
+    let productos = texto.split(",");
+
+    let vocales = 0;
+    let puntos = 0;
+    let otros = 0;
+
+    for (let i = 0; i < productos.length; i++) {
+    let nombre = productos[i].trim(); // quitar espacios
+
+    if (nombre.length === 0) continue; // saltar si está vacío
+
+    // Convertir la primera letra a minúscula para comparar
+    let primera = nombre.charAt(0).toLowerCase();
+    let ultima = nombre.charAt(nombre.length - 1);
+
+    // Verificar si comienza con vocal
+    if (primera === "a" || primera === "e" || primera === "i" || primera === "o" || primera === "u") {
+        vocales++;
+    } 
+    // Si no empieza con vocal, revisar si termina en punto
+    else if (ultima === ".") {
+        puntos++;
+    } 
+    // Si no cumple ninguna condición
+    else {
+        otros++;
+    }
+    }
+
+    // Mostrar resultados
+    let salida = document.getElementById("salida");
+    salida.innerHTML = `
+    <p>🟢 Productos que empiezan con vocal: <strong>${vocales}</strong></p>
+    <p>🟡 Productos que terminan con punto: <strong>${puntos}</strong></p>
+    <p>🔵 Otros productos: <strong>${otros}</strong></p>
+    `;
+}
+</script>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #4f46e5, #06b6d4);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.contenedor {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1em;
+    color: #333;
+    margin: 15px 0;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #10b981;
+    border: none;
+    border-radius: 10px;
+    font-size: 1em;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #059669;
+    transform: scale(1.05);
+}
+
+#salida {
+    margin-top: 25px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 1.1em;
+}
+</style>
+</body>
+</html>

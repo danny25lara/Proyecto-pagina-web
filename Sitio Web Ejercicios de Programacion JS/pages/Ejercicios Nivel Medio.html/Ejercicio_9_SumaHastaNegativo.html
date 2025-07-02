@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Suma hasta número negativo</title>
+</head>
+<body>
+<div class="container">
+<h1>➕ Suma de números hasta que ingreses uno negativo</h1>
+
+<label for="numero">Ingresa un número:</label>
+<input type="number" id="numero" placeholder="Ingrese un numero" />
+
+<button onclick="agregarNumero()">Agregar número</button>
+<div id="resultado" class="resultado"></div>
+
+<button onclick="mostrarCodigo()">Mostrar código</button>
+<pre id="codigo"><code>
+let suma = 0;
+let terminado = false;
+let numeros = [];
+
+function agregarNumero() {
+if (terminado) return;
+const input = document.getElementById("numero").value;
+const valor = parseFloat(input.value);
+
+if (valor < 0) {
+terminado = true;
+mostrarResultado("Fin. La suma total es: " + suma + "\\nNúmeros: " + numeros.join(", "));
+} else {
+suma += valor;
+numeros.push(valor);
+mostrarResultado("Suma actual: " + suma + "\\nNúmeros: " + numeros.join(", "));
+}
+input.focus();
+}
+</code></pre>
+</div>
+
+<script>
+let suma = 0;
+let terminado = false;
+let numeros = [];
+
+function agregarNumero() {
+    if (terminado) return;
+
+    const input = document.getElementById("numero");
+    const valor = parseFloat(input.value);
+
+    if (isNaN(valor)) {
+    alert("Ingresa un número válido");
+    return;
+    }
+
+    if (valor < 0) {
+    terminado = true;
+    mostrarResultado("Fin. La suma total es: " + suma + "\nNúmeros: " + numeros.join(", "));
+    } else {
+    suma += valor;
+    numeros.push(valor);
+    mostrarResultado("Suma actual: " + suma + "\nNúmeros: " + numeros.join(", "));
+    }
+    input.value = "";
+    input.focus();
+}
+
+function mostrarResultado(texto) {
+    const resultado = document.getElementById("resultado");
+    resultado.textContent = texto;
+    resultado.classList.add("mostrar");
+}
+
+function mostrarCodigo() {
+    const codigo = document.getElementById("codigo");
+    codigo.style.display = (codigo.style.display === "none") ? "block" : "none";
+}
+</script>
+
+<style>
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    animation: fondoAnimado 8s ease infinite alternate;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+}
+
+h1 {
+    font-size: 2rem;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+button {
+    padding: 12px 24px;
+    margin: 10px 5px;
+    background: linear-gradient(45deg, #f857a6, #ff5858);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.resultado {
+    margin-top: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    font-size: 1.2rem;
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+    white-space: pre-line;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.mostrar {
+    opacity: 1;
+}
+
+#codigo {
+    display: none;
+    margin-top: 25px;
+    background-color: rgba(0, 0, 0, 0.95);
+    color: #00ff99;
+    padding: 25px;
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    white-space: pre-wrap;
+    width: 90%;
+    max-width: 95%;
+    overflow-x: auto;
+    transition: all 0.4s ease;
+}
+
+@keyframes fondoAnimado {
+    0% {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    }
+    100% {
+    background: linear-gradient(135deg, #00f2fe, #4facfe);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+    opacity: 0;
+    transform: translateY(-10px);
+    }
+    to {
+    opacity: 1;
+    transform: translateY(0);
+    }
+}
+.volver-menu-container {
+position: fixed;
+top: 20px;
+left: 20px;
+z-index: 9999;
+}
+
+.boton-volver-menu {
+background-color: #007bff;
+color: white;
+padding: 12px 24px;
+border-radius: 25px;
+text-decoration: none;
+font-weight: 600;
+box-shadow: 0 4px 8px rgba(0, 123, 255, 0.4);
+transition: background-color 0.3s ease, box-shadow 0.3s ease;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+display: inline-block;
+}
+
+.boton-volver-menu:hover {
+background-color: #0056b3;
+box-shadow: 0 6px 12px rgba(0, 86, 179, 0.6);
+}
+</style>
+<div class="volver-menu-container">
+    <a href="/pages/Ejercicios Nivel Medio.html/Menu_Nivel_Medio.html" class="boton-volver-menu">⬅️ Volver al Menú Principal</a>
+</div>
+</body>
+</html>
